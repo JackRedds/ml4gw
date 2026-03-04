@@ -1,0 +1,12 @@
+ml4gw.waveforms.adhoc.cosmic\_string
+====================================
+
+.. automodule:: ml4gw.waveforms.adhoc.cosmic_string
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      GenerateString
+   

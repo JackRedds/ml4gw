@@ -1,0 +1,12 @@
+ml4gw.waveforms.adhoc.turkey\_window
+====================================
+
+.. automodule:: ml4gw.waveforms.adhoc.turkey_window
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      turkey_window
+   

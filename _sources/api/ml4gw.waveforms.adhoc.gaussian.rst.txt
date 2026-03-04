@@ -1,0 +1,12 @@
+ml4gw.waveforms.adhoc.gaussian
+==============================
+
+.. automodule:: ml4gw.waveforms.adhoc.gaussian
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Gaussian
+   

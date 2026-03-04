@@ -1,0 +1,18 @@
+ml4gw.waveforms.adhoc
+=====================
+
+.. automodule:: ml4gw.waveforms.adhoc
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   cosmic_string
+   gaussian
+   ringdown
+   sine_gaussian
+   turkey_window
+   white_noise_burst

@@ -1,0 +1,12 @@
+ml4gw.waveforms.adhoc.white\_noise\_burst
+=========================================
+
+.. automodule:: ml4gw.waveforms.adhoc.white_noise_burst
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      WhiteNoiseBurst
+   
