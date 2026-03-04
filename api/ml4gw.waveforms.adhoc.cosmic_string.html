@@ -116,14 +116,14 @@
 <p class="rubric">Classes</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ml4gw.waveforms.adhoc.cosmic_string.GenerateString" title="ml4gw.waveforms.adhoc.cosmic_string.GenerateString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GenerateString</span></code></a>(sample_rate, duration)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ml4gw.waveforms.adhoc.cosmic_string.CosmicString" title="ml4gw.waveforms.adhoc.cosmic_string.CosmicString"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosmicString</span></code></a>(sample_rate, duration)</p></td>
 <td><p>PyTorch re-implementation of the 'XLALGenerateString' logic for cosmic-string waveforms: 'cusp', 'kink', or 'kinkkink'. LAL sets:   - f_low = 1 Hz   - length = floor(9.0 / f_low / dt / 2) * 2 + 1  =&gt; ~9 seconds total   - The waveforms are built in frequency domain and iFFT to time domain.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
-<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.cosmic_string.GenerateString">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ml4gw.waveforms.adhoc.cosmic_string.</span></span><span class="sig-name descname"><span class="pre">GenerateString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.cosmic_string.GenerateString" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.cosmic_string.CosmicString">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ml4gw.waveforms.adhoc.cosmic_string.</span></span><span class="sig-name descname"><span class="pre">CosmicString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.cosmic_string.CosmicString" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>PyTorch re-implementation of the 'XLALGenerateString' logic for cosmic-string
 waveforms: 'cusp', 'kink', or 'kinkkink'.
@@ -144,8 +144,8 @@ LAL sets:</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.cosmic_string.GenerateString.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">power</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_high</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.cosmic_string.GenerateString.forward" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.cosmic_string.CosmicString.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">power</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_high</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.cosmic_string.CosmicString.forward" title="Link to this definition"></a></dt>
 <dd><p>Generate the chosen cosmic-string waveform in plus polarization,
 with cross=0.
 waveform must be: &quot;cusp&quot;  -4.0 / 3.0, &quot;kink&quot; -5.0 / 3.0, or &quot;kinkkink&quot; -2.0.

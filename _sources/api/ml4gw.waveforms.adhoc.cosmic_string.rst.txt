@@ -8,5 +8,5 @@ ml4gw.waveforms.adhoc.cosmic\_string
 
    .. autosummary::
    
-      GenerateString
+      CosmicString
    
