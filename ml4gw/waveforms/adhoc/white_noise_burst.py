@@ -70,7 +70,7 @@ class WhiteNoiseBurst(nn.Module):
         batch = frequency.shape[0]
         length = self.length
         device = frequency.device
-        dtype = frequency.dtype
+        dtype = torch.float64
 
         if (self.duration < 0) or (frequency < 0).any() or (bandwidth < 0).any() \
            or (eccentricity < 0).any() or (eccentricity > 1).any() or (int_hdot_squared < 0).any():

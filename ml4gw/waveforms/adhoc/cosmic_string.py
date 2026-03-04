@@ -4,7 +4,7 @@ from torch import Tensor
 from ml4gw.types import BatchTensor, Tensor
 from .turkey_window import turkey_window
 
-class GenerateString(torch.nn.Module):
+class CosmicString(torch.nn.Module):
     """
     PyTorch re-implementation of the 'XLALGenerateString' logic for cosmic-string
     waveforms: 'cusp', 'kink', or 'kinkkink'.
