@@ -119,7 +119,7 @@ class MultiSineGaussian(SineGaussian):
         self.sample_rate = sample_rate
         self.duration = duration
 
-    def ave_parameters(self, parameters: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor]:
+    def ave_parameters(self, parameters: Dict[str, torch.Tensor]):
         averaged_params = {}
         for i, params in parameters.items():
             for k, v in params.items():
@@ -131,7 +131,7 @@ class MultiSineGaussian(SineGaussian):
             averaged_params[k] = torch.stack(averaged_params[k])
         return averaged_params
     
-    def shift_waveforms(self, cross: torch.Tensor, plus: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+    def shift_waveforms(self, cross: torch.Tensor, plus: torch.Tensor):
         N = cross.shape[0]
         shifts = (torch.rand(N, device=cross.device) - 0.5) * 2 * self.max_shift
         shift_samples = (shifts * self.sample_rate).long()
