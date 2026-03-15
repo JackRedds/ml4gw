@@ -131,9 +131,8 @@ class MultiSineGaussian(SineGaussian):
             averaged_params[k] = torch.stack(averaged_params[k])
         return averaged_params
     
-    def shift_waveforms(self, cross: torch.Tensor, plus: torch.Tensor):
+    def shift_waveforms(self, cross: torch.Tensor, plus: torch.Tensor, shifts: torch.Tensor):
         N = cross.shape[0]
-        shifts = (torch.rand(N, device=cross.device) - 0.5) * 2 * self.max_shift
         shift_samples = (shifts * self.sample_rate).long()
         shifted_cross = torch.zeros_like(cross)
         shifted_plus = torch.zeros_like(plus)
@@ -154,8 +153,12 @@ class MultiSineGaussian(SineGaussian):
         cross_waveforms = []
         plus_waveforms = []
         for i, params in parameters.items():
+            shifts = params["shifts"]
+            params = {
+                k: v for k, v in params.items() if k != "shifts"
+            }
             cross, plus = super().forward(**params)
-            cross, plus = self.shift_waveforms(cross, plus)
+            cross, plus = self.shift_waveforms(cross, plus, shifts)
             cross = cross.mean(dim=0, keepdim=True)
             plus = plus.mean(dim=0, keepdim=True)
             cross_waveforms.append(cross)
