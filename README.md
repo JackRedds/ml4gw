@@ -45,11 +45,11 @@
 | ml4gw/utils/interferometer.py                |       21 |        0 |    100% |           |
 | ml4gw/utils/slicing.py                       |      106 |        2 |     98% |  318, 369 |
 | ml4gw/waveforms/\_\_init\_\_.py              |        2 |        0 |    100% |           |
-| ml4gw/waveforms/adhoc/\_\_init\_\_.py        |        6 |        0 |    100% |           |
+| ml4gw/waveforms/adhoc/\_\_init\_\_.py        |        5 |        0 |    100% |           |
 | ml4gw/waveforms/adhoc/cosmic\_string.py      |       46 |       38 |     17% |24-33, 53-97 |
 | ml4gw/waveforms/adhoc/gaussian.py            |       28 |       21 |     25% |8-14, 18-41 |
 | ml4gw/waveforms/adhoc/ringdown.py            |       36 |       29 |     19% |18-25, 57-109 |
-| ml4gw/waveforms/adhoc/sine\_gaussian.py      |       84 |       41 |     51% |117-120, 123-132, 135-151, 154-166 |
+| ml4gw/waveforms/adhoc/sine\_gaussian.py      |       85 |       42 |     51% |117-120, 123-132, 135-150, 153-169 |
 | ml4gw/waveforms/adhoc/turkey\_window.py      |       15 |       12 |     20% |     10-21 |
 | ml4gw/waveforms/adhoc/white\_noise\_burst.py |       72 |       64 |     11% |30-39, 63-132 |
 | ml4gw/waveforms/cbc/\_\_init\_\_.py          |        3 |        0 |    100% |           |
@@ -61,7 +61,7 @@
 | ml4gw/waveforms/cbc/utils.py                 |       48 |        0 |    100% |           |
 | ml4gw/waveforms/conversion.py                |       81 |        0 |    100% |           |
 | ml4gw/waveforms/generator.py                 |      103 |        0 |    100% |           |
-| **TOTAL**                                    | **3338** |  **364** | **89%** |           |
+| **TOTAL**                                    | **3338** |  **365** | **89%** |           |
 
 
 ## Setup coverage badge
