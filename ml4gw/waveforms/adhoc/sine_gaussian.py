@@ -159,8 +159,8 @@ class MultiSineGaussian(SineGaussian):
             }
             cross, plus = super().forward(**params)
             cross, plus = self.shift_waveforms(cross, plus, shifts)
-            cross = cross.mean(dim=0, keepdim=True)
-            plus = plus.mean(dim=0, keepdim=True)
+            cross = cross.sum(dim=0, keepdim=True)
+            plus = plus.sum(dim=0, keepdim=True)
             cross_waveforms.append(cross)
             plus_waveforms.append(plus)
         cross = torch.vstack(cross_waveforms)
