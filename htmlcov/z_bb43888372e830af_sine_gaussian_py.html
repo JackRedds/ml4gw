@@ -4,14 +4,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Coverage for ml4gw/waveforms/adhoc/sine_gaussian.py: 51%</title>
     <link rel="icon" sizes="32x32" href="favicon_32_cb_c827f16f.png">
-    <link rel="stylesheet" href="style_cb_9ff733b0.css" type="text/css">
+    <link rel="stylesheet" href="style_cb_4667309f.css" type="text/css">
     <script src="coverage_html_cb_dd2e7eb5.js" defer></script>
 </head>
 <body class="pyfile">
 <header>
     <div class="content">
         <h1>
-            <span class="text">Coverage for </span><b>ml4gw&#8201;/&#8201;waveforms&#8201;/&#8201;adhoc&#8201;/&#8201;sine_gaussian.py</b>:
+            <span class="text">Coverage for </span><b>ml4gw<span class="sep">/</span>waveforms<span class="sep">/</span>adhoc<span class="sep">/</span>sine_gaussian.py</b>:
             <span class="pc_cov">51%</span>
         </h1>
         <aside id="help_panel_wrapper">
@@ -64,8 +64,8 @@
             <a id="indexLink" class="nav" href="index.html">&Hat; index</a> &nbsp; &nbsp;
             <a id="nextFileLink" class="nav" href="z_bb43888372e830af_turkey_window_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
-            <a class="nav" href="https://coverage.readthedocs.io/en/7.13.1">coverage.py v7.13.1</a>,
-            created at 2026-03-15 20:01 +0000
+            <a class="nav" href="https://coverage.readthedocs.io/en/7.14.1">coverage.py v7.14.1</a>,
+            created at 2026-06-17 20:17 +0000
         </p>
         <aside class="hidden">
             <button type="button" class="button_next_chunk" data-shortcut="j"></button>
@@ -241,8 +241,8 @@
     <p class="mis mis2 show_mis"><span class="n"><a id="t159" href="#t159">159</a></span><span class="t">            <span class="op">}</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t160" href="#t160">160</a></span><span class="t">            <span class="nam">cross</span><span class="op">,</span> <span class="nam">plus</span> <span class="op">=</span> <span class="nam">super</span><span class="op">(</span><span class="op">)</span><span class="op">.</span><span class="nam">forward</span><span class="op">(</span><span class="op">**</span><span class="nam">params</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t161" href="#t161">161</a></span><span class="t">            <span class="nam">cross</span><span class="op">,</span> <span class="nam">plus</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">shift_waveforms</span><span class="op">(</span><span class="nam">cross</span><span class="op">,</span> <span class="nam">plus</span><span class="op">,</span> <span class="nam">shifts</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p class="mis show_mis"><span class="n"><a id="t162" href="#t162">162</a></span><span class="t">            <span class="nam">cross</span> <span class="op">=</span> <span class="nam">cross</span><span class="op">.</span><span class="nam">mean</span><span class="op">(</span><span class="nam">dim</span><span class="op">=</span><span class="num">0</span><span class="op">,</span> <span class="nam">keepdim</span><span class="op">=</span><span class="key">True</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p class="mis show_mis"><span class="n"><a id="t163" href="#t163">163</a></span><span class="t">            <span class="nam">plus</span> <span class="op">=</span> <span class="nam">plus</span><span class="op">.</span><span class="nam">mean</span><span class="op">(</span><span class="nam">dim</span><span class="op">=</span><span class="num">0</span><span class="op">,</span> <span class="nam">keepdim</span><span class="op">=</span><span class="key">True</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t162" href="#t162">162</a></span><span class="t">            <span class="nam">cross</span> <span class="op">=</span> <span class="nam">cross</span><span class="op">.</span><span class="nam">sum</span><span class="op">(</span><span class="nam">dim</span><span class="op">=</span><span class="num">0</span><span class="op">,</span> <span class="nam">keepdim</span><span class="op">=</span><span class="key">True</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t163" href="#t163">163</a></span><span class="t">            <span class="nam">plus</span> <span class="op">=</span> <span class="nam">plus</span><span class="op">.</span><span class="nam">sum</span><span class="op">(</span><span class="nam">dim</span><span class="op">=</span><span class="num">0</span><span class="op">,</span> <span class="nam">keepdim</span><span class="op">=</span><span class="key">True</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t164" href="#t164">164</a></span><span class="t">            <span class="nam">cross_waveforms</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">cross</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t165" href="#t165">165</a></span><span class="t">            <span class="nam">plus_waveforms</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">plus</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t166" href="#t166">166</a></span><span class="t">        <span class="nam">cross</span> <span class="op">=</span> <span class="nam">torch</span><span class="op">.</span><span class="nam">vstack</span><span class="op">(</span><span class="nam">cross_waveforms</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
@@ -257,8 +257,8 @@
             <a class="nav" href="index.html">&Hat; index</a> &nbsp; &nbsp;
             <a class="nav" href="z_bb43888372e830af_turkey_window_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
-            <a class="nav" href="https://coverage.readthedocs.io/en/7.13.1">coverage.py v7.13.1</a>,
-            created at 2026-03-15 20:01 +0000
+            <a class="nav" href="https://coverage.readthedocs.io/en/7.14.1">coverage.py v7.14.1</a>,
+            created at 2026-06-17 20:17 +0000
         </p>
     </div>
 </footer>
