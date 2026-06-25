@@ -31,6 +31,24 @@ class SineGaussian(torch.nn.Module):
 
         self.register_buffer("times", times)
 
+    def shift_waveforms(self, cross: torch.Tensor, plus: torch.Tensor, shifts: torch.Tensor):
+        N = cross.shape[0]
+        shift_samples = (shifts * self.sample_rate).long()
+        shifted_cross = torch.zeros_like(cross)
+        shifted_plus = torch.zeros_like(plus)
+        for i in range(N):
+            shift = shift_samples[i].item()
+            if shift > 0:
+                shifted_cross[i, shift:] = cross[i, :-shift]
+                shifted_plus[i, shift:] = plus[i, :-shift]
+            elif shift < 0:
+                shifted_cross[i, :shift] = cross[i, -shift:]
+                shifted_plus[i, :shift] = plus[i, -shift:]
+            else:
+                shifted_cross[i] = cross[i]
+                shifted_plus[i] = plus[i]
+        return shifted_cross, shifted_plus
+    
     def forward(
         self,
         quality: BatchTensor,
@@ -38,6 +56,7 @@ class SineGaussian(torch.nn.Module):
         hrss: BatchTensor,
         phase: BatchTensor,
         eccentricity: BatchTensor,
+        shifts: BatchTensor,
     ):
         """
         Generate lalinference implementation of a sine-Gaussian waveform.
@@ -61,13 +80,14 @@ class SineGaussian(torch.nn.Module):
         Returns:
             Tensors of cross and plus polarizations
         """
-        dtype = frequency.dtype
+        dtype = torch.float64
         # add dimension for calculating waveforms in batch
         frequency = frequency.view(-1, 1)
         quality = quality.view(-1, 1)
         hrss = hrss.view(-1, 1)
         phase = phase.view(-1, 1)
         eccentricity = eccentricity.view(-1, 1)
+        shifts = shifts.view(-1, 1)
 
         # TODO: enforce all inputs are on the same device?
         pi = torch.tensor([torch.pi], device=frequency.device)
@@ -106,6 +126,7 @@ class SineGaussian(torch.nn.Module):
         cross = fac.imag * h0_cross
         plus = fac.real * h0_plus
 
+        cross, plus = self.shift_waveforms(cross, plus, shifts)
         cross = cross.to(dtype)
         plus = plus.to(dtype)
 
@@ -113,57 +134,41 @@ class SineGaussian(torch.nn.Module):
 
 
 class MultiSineGaussian(SineGaussian):
-    def __init__(self, sample_rate: float, duration: float, max_shift: float = 1e-3):
+    def __init__(self, sample_rate: float, duration: float):
         super().__init__(sample_rate=sample_rate, duration=duration)
-        self.max_shift = max_shift
         self.sample_rate = sample_rate
         self.duration = duration
 
-    def ave_parameters(self, parameters: Dict[str, torch.Tensor]):
-        averaged_params = {}
-        for i, params in parameters.items():
-            for k, v in params.items():
-                if k not in averaged_params:
-                    averaged_params[k] = []
-                averaged_params[k].append(v.mean(dim=0))
-        # average parameters
-        for k in averaged_params:
-            averaged_params[k] = torch.stack(averaged_params[k])
-        return averaged_params
-    
-    def shift_waveforms(self, cross: torch.Tensor, plus: torch.Tensor, shifts: torch.Tensor):
-        N = cross.shape[0]
-        shift_samples = (shifts * self.sample_rate).long()
-        shifted_cross = torch.zeros_like(cross)
-        shifted_plus = torch.zeros_like(plus)
-        for i in range(N):
-            shift = shift_samples[i].item()
-            if shift > 0:
-                shifted_cross[i, shift:] = cross[i, :-shift]
-                shifted_plus[i, shift:] = plus[i, :-shift]
-            elif shift < 0:
-                shifted_cross[i, :shift] = cross[i, -shift:]
-                shifted_plus[i, :shift] = plus[i, -shift:]
-            else:
-                shifted_cross[i] = cross[i]
-                shifted_plus[i] = plus[i]
-        return shifted_cross, shifted_plus
+    def compute_hrss(self, plus: torch.Tensor, cross: torch.Tensor):
+        dt = 1.0 / self.sample_rate
+
+        return torch.sqrt(
+            dt * torch.sum(
+                plus**2 + cross**2,
+                dim=-1,
+            )
+        ) 
     
     def forward(self, **parameters):
-        cross_waveforms = []
-        plus_waveforms = []
-        for i, params in parameters.items():
-            shifts = params["shifts"]
-            params = {
-                k: v for k, v in params.items() if k != "shifts"
-            }
-            cross, plus = super().forward(**params)
-            cross, plus = self.shift_waveforms(cross, plus, shifts)
-            cross = cross.sum(dim=0, keepdim=True)
-            plus = plus.sum(dim=0, keepdim=True)
-            cross_waveforms.append(cross)
-            plus_waveforms.append(plus)
-        cross = torch.vstack(cross_waveforms)
-        plus = torch.vstack(plus_waveforms)
+        hrss_tot = parameters.pop("hrss_tot")
+        N = hrss_tot.shape[0]
+        n_sg = hrss_tot.shape[-1]
+        hrss_tot = hrss_tot[:, 0]
+        n_samples = int(self.sample_rate * self.duration)
+
+        cross, plus = super().forward(**parameters)
+        cross = cross.reshape((N, n_sg, n_samples))
+        plus = plus.reshape((N, n_sg, n_samples))
+
+        cross = cross.nansum(dim=1, keepdim=False)
+        plus = plus.nansum(dim=1, keepdim=False)
+        current_hrss = self.compute_hrss(plus, cross)
+
+        scale = (
+            hrss_tot.view(-1)
+            / current_hrss
+        ).view(-1, 1)
+        cross *= scale
+        plus *= scale
 
         return cross, plus
