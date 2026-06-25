@@ -124,7 +124,7 @@
 <p class="rubric">Classes</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian" title="ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiSineGaussian</span></code></a>(sample_rate, duration[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian" title="ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiSineGaussian</span></code></a>(sample_rate, duration)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#ml4gw.waveforms.adhoc.sine_gaussian.SineGaussian" title="ml4gw.waveforms.adhoc.sine_gaussian.SineGaussian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SineGaussian</span></code></a>(sample_rate, duration)</p></td>
@@ -134,23 +134,25 @@
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ml4gw.waveforms.adhoc.sine_gaussian.</span></span><span class="sig-name descname"><span class="pre">MultiSineGaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ml4gw.waveforms.adhoc.sine_gaussian.</span></span><span class="sig-name descname"><span class="pre">MultiSineGaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ml4gw.waveforms.adhoc.sine_gaussian.SineGaussian" title="ml4gw.waveforms.adhoc.sine_gaussian.SineGaussian"><code class="xref py py-class docutils literal notranslate"><span class="pre">SineGaussian</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sample_rate</strong> (<em>float</em>)</p></li>
 <li><p><strong>duration</strong> (<em>float</em>)</p></li>
-<li><p><strong>max_shift</strong> (<em>float</em>)</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian.ave_parameters">
-<span class="sig-name descname"><span class="pre">ave_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian.ave_parameters" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian.compute_hrss">
+<span class="sig-name descname"><span class="pre">compute_hrss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cross</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian.compute_hrss" title="Link to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>parameters</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Tensor</em><em>]</em>)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plus</strong> (<em>Tensor</em>)</p></li>
+<li><p><strong>cross</strong> (<em>Tensor</em>)</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -159,20 +161,6 @@
 <dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian.forward">
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian.forward" title="Link to this definition"></a></dt>
 <dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian.shift_waveforms">
-<span class="sig-name descname"><span class="pre">shift_waveforms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cross</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shifts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.sine_gaussian.MultiSineGaussian.shift_waveforms" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>cross</strong> (<em>Tensor</em>)</p></li>
-<li><p><strong>plus</strong> (<em>Tensor</em>)</p></li>
-<li><p><strong>shifts</strong> (<em>Tensor</em>)</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
 
 </dd></dl>
 
@@ -191,7 +179,7 @@
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.sine_gaussian.SineGaussian.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quality</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hrss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eccentricity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.sine_gaussian.SineGaussian.forward" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quality</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hrss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eccentricity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shifts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.sine_gaussian.SineGaussian.forward" title="Link to this definition"></a></dt>
 <dd><p>Generate lalinference implementation of a sine-Gaussian waveform.
 See
 git.ligo.org/lscsoft/lalsuite/-/blob/master/lalinference/lib/LALInferenceBurstRoutines.c#L381
@@ -206,10 +194,25 @@ for details on parameter definitions.</p>
 <li><p><strong>eccentricity</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>) -- Eccentricity of the sine-Gaussian waveform.
 Controls the relative amplitudes of the
 hplus and hcross polarizations.</p></li>
+<li><p><strong>shifts</strong> (<em>Float</em><em>[</em><em>Tensor</em><em>, </em><em>'batch'</em><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Tensors of cross and plus polarizations</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.sine_gaussian.SineGaussian.shift_waveforms">
+<span class="sig-name descname"><span class="pre">shift_waveforms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cross</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shifts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.sine_gaussian.SineGaussian.shift_waveforms" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cross</strong> (<em>Tensor</em>)</p></li>
+<li><p><strong>plus</strong> (<em>Tensor</em>)</p></li>
+<li><p><strong>shifts</strong> (<em>Tensor</em>)</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
