@@ -30,24 +30,6 @@ class SineGaussian(torch.nn.Module):
         times -= duration / 2.0
 
         self.register_buffer("times", times)
-
-    def shift_waveforms(self, cross: torch.Tensor, plus: torch.Tensor, shifts: torch.Tensor):
-        N = cross.shape[0]
-        shift_samples = (shifts * self.sample_rate).long()
-        shifted_cross = torch.zeros_like(cross)
-        shifted_plus = torch.zeros_like(plus)
-        for i in range(N):
-            shift = shift_samples[i].item()
-            if shift > 0:
-                shifted_cross[i, shift:] = cross[i, :-shift]
-                shifted_plus[i, shift:] = plus[i, :-shift]
-            elif shift < 0:
-                shifted_cross[i, :shift] = cross[i, -shift:]
-                shifted_plus[i, :shift] = plus[i, -shift:]
-            else:
-                shifted_cross[i] = cross[i]
-                shifted_plus[i] = plus[i]
-        return shifted_cross, shifted_plus
     
     def forward(
         self,
@@ -117,7 +99,7 @@ class SineGaussian(torch.nn.Module):
         )
 
         # cast the phase to a complex number
-        phi = 2 * pi * frequency * self.times
+        phi = 2 * pi * frequency * (self.times - shifts)
         complex_phase = torch.complex(torch.zeros_like(phi), (phi - phase))
 
         # calculate the waveform and apply a tukey window to taper the waveform
@@ -126,7 +108,6 @@ class SineGaussian(torch.nn.Module):
         cross = fac.imag * h0_cross
         plus = fac.real * h0_plus
 
-        cross, plus = self.shift_waveforms(cross, plus, shifts)
         cross = cross.to(dtype)
         plus = plus.to(dtype)
 
@@ -134,10 +115,11 @@ class SineGaussian(torch.nn.Module):
 
 
 class MultiSineGaussian(SineGaussian):
-    def __init__(self, sample_rate: float, duration: float):
+    def __init__(self, sample_rate: float, duration: float, norm: bool = True):
         super().__init__(sample_rate=sample_rate, duration=duration)
         self.sample_rate = sample_rate
         self.duration = duration
+        self.norm = norm
 
     def compute_hrss(self, plus: torch.Tensor, cross: torch.Tensor):
         dt = 1.0 / self.sample_rate
@@ -162,13 +144,14 @@ class MultiSineGaussian(SineGaussian):
 
         cross = cross.nansum(dim=1, keepdim=False)
         plus = plus.nansum(dim=1, keepdim=False)
-        current_hrss = self.compute_hrss(plus, cross)
 
-        scale = (
-            hrss_tot.view(-1)
-            / current_hrss
-        ).view(-1, 1)
-        cross *= scale
-        plus *= scale
+        if self.norm:
+            current_hrss = self.compute_hrss(plus, cross)
+            scale = (
+                hrss_tot.view(-1)
+                / current_hrss
+            ).view(-1, 1)
+            cross *= scale
+            plus *= scale
 
         return cross, plus
