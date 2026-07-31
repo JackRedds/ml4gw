@@ -2,7 +2,7 @@ import math
 import torch
 from torch import Tensor
 from ml4gw.types import BatchTensor, Tensor
-from .turkey_window import turkey_window
+from .waveform_helper import turkey_window, semi_major_minor_from_e
 
 class CosmicString(torch.nn.Module):
     """
@@ -34,9 +34,9 @@ class CosmicString(torch.nn.Module):
 
     def forward(
         self,
-        power: float,
+        power: BatchTensor,
         amplitude: BatchTensor,
-        f_high: float
+        f_high: BatchTensor,
     ):
         """
         Generate the chosen cosmic-string waveform in plus polarization,
@@ -50,48 +50,142 @@ class CosmicString(torch.nn.Module):
             (h_cross, h_plus): shape (batch, self.length).
             The cross polarization is zero (as in LAL).
         """
+
+        # ---------------------------------------------------------
+        # Make all parameters explicitly (batch, 1)
+        # ---------------------------------------------------------
+
+        power = power.view(-1, 1)
         amplitude = amplitude.view(-1, 1)
+        f_high = f_high.view(-1, 1)
         batch = amplitude.shape[0]
 
+        # ---------------------------------------------------------
+        # Basic setup
+        # ---------------------------------------------------------
+
         device = amplitude.device
+        dtype = amplitude.dtype
         f_low = 1.0
 
         length = self.length
         dt = 1 / self.sample_rate
         freq_bins = length // 2 + 1
 
-        freq = torch.fft.rfftfreq(length, d=dt, device=device).unsqueeze(0)
-        k = torch.arange(freq_bins, dtype=torch.float64, device=device)
-        phase_factor = torch.exp(-1j * math.pi * k * (length - 1) / float(length))
+        freq = torch.fft.rfftfreq(
+            length, 
+            d=dt, 
+            device=device
+        ).to(dtype).unsqueeze(0)
 
-        Hf = torch.zeros((batch, freq_bins), dtype=torch.complex128, device=device)
+        # ---------------------------------------------------------
+        # Phase factor
+        # ---------------------------------------------------------
 
-        valid_mask = torch.ones(freq_bins, dtype=torch.bool, device=device)
+        k = torch.arange(
+            freq_bins, 
+            dtype=dtype,
+            device=device
+        )
+
+        phase_factor = torch.exp(
+            -1j * math.pi * k * (length - 1) / float(length)
+        )
+
+        phase_factor = phase_factor.unsqueeze(0)
+
+        # ---------------------------------------------------------
+        # Frequency mask
+        # ---------------------------------------------------------
+
+        valid_mask = torch.ones(
+            freq_bins, 
+            dtype=torch.bool, 
+            device=device
+        )
+
         valid_mask[0] = False
         valid_mask[-1] = False
-        valid_mask_2d = valid_mask.unsqueeze(0)
 
-        f_clamped = torch.clamp(freq, min=1e-20)
+        valid_mask = valid_mask.unsqueeze(0)
+
+        # ---------------------------------------------------------
+        # Avoid division by zero at f = 0
+        # ---------------------------------------------------------
+
+        f_clamped = torch.clamp(
+            freq, 
+            min=1e-20
+        )
+
+        # ---------------------------------------------------------
+        # Cosmic-string power-law spectrum
+        # ---------------------------------------------------------
 
         base_factor = (1.0 + (f_low**2) / (f_clamped**2))**(-4.0)
 
-        base_factor *= f_clamped**(power)
+        base_factor = base_factor * (f_clamped ** power)
+
+        # ---------------------------------------------------------
+        # High-frequency exponential taper
+        # ---------------------------------------------------------
 
         ratio = freq / f_high 
-        taper = torch.where(ratio > 1.0, torch.exp(1.0 - ratio), torch.ones_like(ratio))
+
+        taper = torch.where(
+            ratio > 1.0, 
+            torch.exp(1.0 - ratio), 
+            torch.ones_like(ratio)
+        )
+
+        # ---------------------------------------------------------
+        # Apply amplitude
+        # ---------------------------------------------------------
 
         amp_val = amplitude * base_factor
         amp_val = amp_val * taper
 
-        amp_val = torch.where(valid_mask_2d, amp_val, torch.zeros_like(amp_val))
+        # ---------------------------------------------------------
+        # Remove DC and Nyquist bins
+        # ---------------------------------------------------------
+
+        amp_val = torch.where(
+            valid_mask,
+            amp_val, 
+            torch.zeros_like(amp_val)
+        )
+
+        # ---------------------------------------------------------
+        # Apply phase
+        # ---------------------------------------------------------
 
         A = amp_val * phase_factor
 
-        hplus = torch.fft.irfft(A, n=length, dim=-1)
-        hplus = hplus*self.sample_rate
+        # ---------------------------------------------------------
+        # Frequency -> time domain
+        # ---------------------------------------------------------
+
+        hplus = torch.fft.irfft(
+            A, 
+            n=length, 
+            dim=-1
+        )
+
+        hplus = hplus * self.sample_rate
+
         hcross = torch.zeros_like(hplus)
 
-        tw = turkey_window(length, alpha=0.5, device=device, dtype=torch.float64)
+        # ---------------------------------------------------------
+        # Turkey window
+        # ---------------------------------------------------------
+
+        tw = turkey_window(
+            length, 
+            alpha=0.5, 
+            device=device, 
+            dtype=dtype
+        )
+
         hplus = hplus * tw
 
         return hcross, hplus

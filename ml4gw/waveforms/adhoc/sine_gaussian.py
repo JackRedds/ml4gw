@@ -3,13 +3,7 @@ from torch import Tensor
 
 from typing import Dict, Tuple
 from ml4gw.types import BatchTensor
-
-
-def semi_major_minor_from_e(e: Tensor):
-    a = 1.0 / torch.sqrt(2.0 - (e * e))
-    b = a * torch.sqrt(1.0 - (e * e))
-    return a, b
-
+from .waveform_helper import semi_major_minor_from_e
 
 class SineGaussian(torch.nn.Module):
     """
@@ -62,7 +56,6 @@ class SineGaussian(torch.nn.Module):
         Returns:
             Tensors of cross and plus polarizations
         """
-        dtype = torch.float64
         # add dimension for calculating waveforms in batch
         frequency = frequency.view(-1, 1)
         quality = quality.view(-1, 1)
@@ -71,8 +64,11 @@ class SineGaussian(torch.nn.Module):
         eccentricity = eccentricity.view(-1, 1)
         shifts = shifts.view(-1, 1)
 
+        device = frequency.device
+        dtype = frequency.dtype
+
         # TODO: enforce all inputs are on the same device?
-        pi = torch.tensor([torch.pi], device=frequency.device)
+        pi = torch.tensor([torch.pi], device=device)
 
         # calculate relative hplus / hcross amplitudes based on eccentricity
         # as well as normalization factors

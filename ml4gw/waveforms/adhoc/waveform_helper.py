@@ -1,5 +1,6 @@
 import math
 import torch
+from torch import Tensor
 
 
 def turkey_window(n: int, alpha: float = 0.5, device=None, dtype=None):
@@ -19,3 +20,8 @@ def turkey_window(n: int, alpha: float = 0.5, device=None, dtype=None):
     t2 = torch.linspace(torch.pi / 2, 0, taper_len, device=device, dtype=dtype)
     w[-taper_len:] = 0.5 * (1.0 - torch.cos(t2))
     return w
+
+def semi_major_minor_from_e(e: Tensor):
+    a = 1.0 / torch.sqrt(2.0 - (e * e))
+    b = a * torch.sqrt(1.0 - (e * e))
+    return a, b
