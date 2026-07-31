@@ -1,0 +1,13 @@
+ml4gw.waveforms.adhoc.waveform\_helper
+======================================
+
+.. automodule:: ml4gw.waveforms.adhoc.waveform_helper
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      semi_major_minor_from_e
+      turkey_window
+   

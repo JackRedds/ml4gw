@@ -14,5 +14,5 @@ ml4gw.waveforms.adhoc
    gaussian
    ringdown
    sine_gaussian
-   turkey_window
+   waveform_helper
    white_noise_burst

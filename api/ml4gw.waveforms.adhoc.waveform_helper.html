@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ml4gw.waveforms.adhoc.turkey_window &mdash; ml4gw  documentation</title>
+  <title>ml4gw.waveforms.adhoc.waveform_helper &mdash; ml4gw  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
@@ -70,7 +70,7 @@
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.gaussian.html">ml4gw.waveforms.adhoc.gaussian</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.ringdown.html">ml4gw.waveforms.adhoc.ringdown</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.sine_gaussian.html">ml4gw.waveforms.adhoc.sine_gaussian</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">ml4gw.waveforms.adhoc.turkey_window</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ml4gw.waveforms.adhoc.waveform_helper</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.white_noise_burst.html">ml4gw.waveforms.adhoc.white_noise_burst</a></li>
 </ul>
 </li>
@@ -101,9 +101,9 @@
           <li class="breadcrumb-item"><a href="ml4gw.html">ml4gw</a></li>
           <li class="breadcrumb-item"><a href="ml4gw.waveforms.html">ml4gw.waveforms</a></li>
           <li class="breadcrumb-item"><a href="ml4gw.waveforms.adhoc.html">ml4gw.waveforms.adhoc</a></li>
-      <li class="breadcrumb-item active">ml4gw.waveforms.adhoc.turkey_window</li>
+      <li class="breadcrumb-item active">ml4gw.waveforms.adhoc.waveform_helper</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/api/ml4gw.waveforms.adhoc.turkey_window.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/ml4gw.waveforms.adhoc.waveform_helper.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -111,19 +111,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-ml4gw.waveforms.adhoc.turkey_window">
-<span id="ml4gw-waveforms-adhoc-turkey-window"></span><h1>ml4gw.waveforms.adhoc.turkey_window<a class="headerlink" href="#module-ml4gw.waveforms.adhoc.turkey_window" title="Link to this heading"></a></h1>
+  <section id="module-ml4gw.waveforms.adhoc.waveform_helper">
+<span id="ml4gw-waveforms-adhoc-waveform-helper"></span><h1>ml4gw.waveforms.adhoc.waveform_helper<a class="headerlink" href="#module-ml4gw.waveforms.adhoc.waveform_helper" title="Link to this heading"></a></h1>
 <p class="rubric">Functions</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ml4gw.waveforms.adhoc.turkey_window.turkey_window" title="ml4gw.waveforms.adhoc.turkey_window.turkey_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turkey_window</span></code></a>(n[, alpha, device, dtype])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ml4gw.waveforms.adhoc.waveform_helper.semi_major_minor_from_e" title="ml4gw.waveforms.adhoc.waveform_helper.semi_major_minor_from_e"><code class="xref py py-obj docutils literal notranslate"><span class="pre">semi_major_minor_from_e</span></code></a>(e)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ml4gw.waveforms.adhoc.waveform_helper.turkey_window" title="ml4gw.waveforms.adhoc.waveform_helper.turkey_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turkey_window</span></code></a>(n[, alpha, device, dtype])</p></td>
 <td><p>Generate a length-n Tukey window with fraction alpha of the window tapered.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py function">
-<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.turkey_window.turkey_window">
-<span class="sig-prename descclassname"><span class="pre">ml4gw.waveforms.adhoc.turkey_window.</span></span><span class="sig-name descname"><span class="pre">turkey_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.turkey_window.turkey_window" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.waveform_helper.semi_major_minor_from_e">
+<span class="sig-prename descclassname"><span class="pre">ml4gw.waveforms.adhoc.waveform_helper.</span></span><span class="sig-name descname"><span class="pre">semi_major_minor_from_e</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.waveform_helper.semi_major_minor_from_e" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>e</strong> (<em>Tensor</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.waveform_helper.turkey_window">
+<span class="sig-prename descclassname"><span class="pre">ml4gw.waveforms.adhoc.waveform_helper.</span></span><span class="sig-name descname"><span class="pre">turkey_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.waveform_helper.turkey_window" title="Link to this definition"></a></dt>
 <dd><p>Generate a length-n Tukey window with fraction alpha of the window tapered.
 alpha=0.5 =&gt; 25% of the samples on each end are tapered, 50% are flat in the middle.</p>
 <dl class="field-list simple">

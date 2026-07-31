@@ -70,7 +70,7 @@
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.gaussian.html">ml4gw.waveforms.adhoc.gaussian</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.ringdown.html">ml4gw.waveforms.adhoc.ringdown</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.sine_gaussian.html">ml4gw.waveforms.adhoc.sine_gaussian</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.turkey_window.html">ml4gw.waveforms.adhoc.turkey_window</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.waveform_helper.html">ml4gw.waveforms.adhoc.waveform_helper</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.white_noise_burst.html">ml4gw.waveforms.adhoc.white_noise_burst</a></li>
 </ul>
 </li>
@@ -149,11 +149,11 @@ LAL sets:</p>
 <dd><p>Generate the chosen cosmic-string waveform in plus polarization,
 with cross=0.
 waveform must be: &quot;cusp&quot;  -4.0 / 3.0, &quot;kink&quot; -5.0 / 3.0, or &quot;kinkkink&quot; -2.0.
-:type power: <span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>
+:type power: <span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>
 :param power: cusp = -4.0 / 3.0, kink = -5.0 / 3.0, or kinkkink = -2.0.
 :type amplitude: <span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>
 :param amplitude: (batch,) overall amplitude scaling parameter.
-:type f_high: <span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>
+:type f_high: <span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>
 :param f_high: (batch,) freq above which we apply exponential taper.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -165,9 +165,9 @@ The cross polarization is zero (as in LAL).</p>
 </dd>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>power</strong> (<em>float</em>)</p></li>
+<li><p><strong>power</strong> (<em>Float</em><em>[</em><em>Tensor</em><em>, </em><em>'batch'</em><em>]</em>)</p></li>
 <li><p><strong>amplitude</strong> (<em>Float</em><em>[</em><em>Tensor</em><em>, </em><em>'batch'</em><em>]</em>)</p></li>
-<li><p><strong>f_high</strong> (<em>float</em>)</p></li>
+<li><p><strong>f_high</strong> (<em>Float</em><em>[</em><em>Tensor</em><em>, </em><em>'batch'</em><em>]</em>)</p></li>
 </ul>
 </dd>
 </dl>
