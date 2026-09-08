@@ -4,6 +4,7 @@ from . import (
     augmentations,
     dataloading,
     distributions,
+    data,
     gw,
     nn,
     spectral,
@@ -22,6 +23,7 @@ __all__ = [
     "spectral",
     "transforms",
     "waveforms",
+    "data",
 ]
 
 __version__ = version(__name__)

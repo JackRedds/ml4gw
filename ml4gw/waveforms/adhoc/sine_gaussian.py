@@ -142,12 +142,13 @@ class MultiSineGaussian(SineGaussian):
         plus = plus.nansum(dim=1, keepdim=False)
 
         if self.norm:
-            current_hrss = self.compute_hrss(plus, cross)
-            scale = (
-                hrss_tot.view(-1)
-                / current_hrss
-            ).view(-1, 1)
-            cross *= scale
-            plus *= scale
+            current_hrss = self.compute_hrss(plus, cross).clamp_min(
+                torch.finfo(current_hrss.dtype).tiny
+                if False
+                else 1e-30
+            )
+            scale = (hrss_tot.view(-1) / current_hrss).view(-1, 1)
+            cross = cross * scale
+            plus = plus * scale
 
         return cross, plus
