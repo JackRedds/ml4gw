@@ -1,7 +1,6 @@
 import torch
 from torch import Tensor
 
-from typing import Dict, Tuple
 from ml4gw.types import BatchTensor
 from .waveform_helper import semi_major_minor_from_e
 
@@ -24,7 +23,7 @@ class SineGaussian(torch.nn.Module):
         times -= duration / 2.0
 
         self.register_buffer("times", times)
-    
+
     def forward(
         self,
         quality: BatchTensor,
@@ -53,6 +52,9 @@ class SineGaussian(torch.nn.Module):
                 Eccentricity of the sine-Gaussian waveform.
                 Controls the relative amplitudes of the
                 hplus and hcross polarizations.
+            shifts:
+                Time shift of the sine-Gaussian waveform
+                relative to the center of the buffer
         Returns:
             Tensors of cross and plus polarizations
         """
@@ -106,48 +108,5 @@ class SineGaussian(torch.nn.Module):
 
         cross = cross.to(dtype)
         plus = plus.to(dtype)
-
-        return cross, plus
-
-
-class MultiSineGaussian(SineGaussian):
-    def __init__(self, sample_rate: float, duration: float, norm: bool = True):
-        super().__init__(sample_rate=sample_rate, duration=duration)
-        self.sample_rate = sample_rate
-        self.duration = duration
-        self.norm = norm
-
-    def compute_hrss(self, plus: torch.Tensor, cross: torch.Tensor):
-        dt = 1.0 / self.sample_rate
-
-        return torch.sqrt(
-            dt * torch.sum(
-                plus**2 + cross**2,
-                dim=-1,
-            )
-        ) 
-    
-    def forward(self, **parameters):
-        hrss_tot = parameters.pop("hrss_tot")
-        N = hrss_tot.shape[0]
-        n_sg = hrss_tot.shape[-1]
-        hrss_tot = hrss_tot[:, 0]
-        n_samples = int(self.sample_rate * self.duration)
-
-        cross, plus = super().forward(**parameters)
-        cross = cross.reshape((N, n_sg, n_samples))
-        plus = plus.reshape((N, n_sg, n_samples))
-
-        cross = cross.nansum(dim=1, keepdim=False)
-        plus = plus.nansum(dim=1, keepdim=False)
-
-        if self.norm:
-            current_hrss = self.compute_hrss(plus, cross)
-            scale = (
-                hrss_tot.view(-1)
-                / current_hrss
-            ).view(-1, 1)
-            cross *= scale
-            plus *= scale
 
         return cross, plus
