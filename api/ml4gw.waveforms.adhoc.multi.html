@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ml4gw.waveforms.adhoc &mdash; ml4gw  documentation</title>
+  <title>ml4gw.waveforms.adhoc.multi &mdash; ml4gw  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ml4gw.waveforms.adhoc.cosmic_string" href="ml4gw.waveforms.adhoc.cosmic_string.html" />
-    <link rel="prev" title="ml4gw.waveforms" href="ml4gw.waveforms.html" /> 
+    <link rel="next" title="ml4gw.waveforms.adhoc.ringdown" href="ml4gw.waveforms.adhoc.ringdown.html" />
+    <link rel="prev" title="ml4gw.waveforms.adhoc.morlet_gabor" href="ml4gw.waveforms.adhoc.morlet_gabor.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,11 +66,11 @@
 <li class="toctree-l2"><a class="reference internal" href="ml4gw.transforms.html">ml4gw.transforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ml4gw.types.html">ml4gw.types</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="ml4gw.waveforms.html">ml4gw.waveforms</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">ml4gw.waveforms.adhoc</a><ul>
+<li class="toctree-l3 current"><a class="reference internal" href="ml4gw.waveforms.adhoc.html">ml4gw.waveforms.adhoc</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.cosmic_string.html">ml4gw.waveforms.adhoc.cosmic_string</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.gaussian.html">ml4gw.waveforms.adhoc.gaussian</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.morlet_gabor.html">ml4gw.waveforms.adhoc.morlet_gabor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.multi.html">ml4gw.waveforms.adhoc.multi</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ml4gw.waveforms.adhoc.multi</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.ringdown.html">ml4gw.waveforms.adhoc.ringdown</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.sine_gaussian.html">ml4gw.waveforms.adhoc.sine_gaussian</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.waveform_helper.html">ml4gw.waveforms.adhoc.waveform_helper</a></li>
@@ -103,9 +103,10 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="ml4gw.html">ml4gw</a></li>
           <li class="breadcrumb-item"><a href="ml4gw.waveforms.html">ml4gw.waveforms</a></li>
-      <li class="breadcrumb-item active">ml4gw.waveforms.adhoc</li>
+          <li class="breadcrumb-item"><a href="ml4gw.waveforms.adhoc.html">ml4gw.waveforms.adhoc</a></li>
+      <li class="breadcrumb-item active">ml4gw.waveforms.adhoc.multi</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/api/ml4gw.waveforms.adhoc.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/ml4gw.waveforms.adhoc.multi.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -113,45 +114,61 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-ml4gw.waveforms.adhoc">
-<span id="ml4gw-waveforms-adhoc"></span><h1>ml4gw.waveforms.adhoc<a class="headerlink" href="#module-ml4gw.waveforms.adhoc" title="Link to this heading"></a></h1>
-<p class="rubric">Modules</p>
+  <section id="module-ml4gw.waveforms.adhoc.multi">
+<span id="ml4gw-waveforms-adhoc-multi"></span><h1>ml4gw.waveforms.adhoc.multi<a class="headerlink" href="#module-ml4gw.waveforms.adhoc.multi" title="Link to this heading"></a></h1>
+<p class="rubric">Classes</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="ml4gw.waveforms.adhoc.cosmic_string.html#module-ml4gw.waveforms.adhoc.cosmic_string" title="ml4gw.waveforms.adhoc.cosmic_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cosmic_string</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="ml4gw.waveforms.adhoc.gaussian.html#module-ml4gw.waveforms.adhoc.gaussian" title="ml4gw.waveforms.adhoc.gaussian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gaussian</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="ml4gw.waveforms.adhoc.morlet_gabor.html#module-ml4gw.waveforms.adhoc.morlet_gabor" title="ml4gw.waveforms.adhoc.morlet_gabor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">morlet_gabor</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="ml4gw.waveforms.adhoc.multi.html#module-ml4gw.waveforms.adhoc.multi" title="ml4gw.waveforms.adhoc.multi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="ml4gw.waveforms.adhoc.ringdown.html#module-ml4gw.waveforms.adhoc.ringdown" title="ml4gw.waveforms.adhoc.ringdown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ringdown</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="ml4gw.waveforms.adhoc.sine_gaussian.html#module-ml4gw.waveforms.adhoc.sine_gaussian" title="ml4gw.waveforms.adhoc.sine_gaussian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sine_gaussian</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="ml4gw.waveforms.adhoc.waveform_helper.html#module-ml4gw.waveforms.adhoc.waveform_helper" title="ml4gw.waveforms.adhoc.waveform_helper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">waveform_helper</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="ml4gw.waveforms.adhoc.white_noise_burst.html#module-ml4gw.waveforms.adhoc.white_noise_burst" title="ml4gw.waveforms.adhoc.white_noise_burst"><code class="xref py py-obj docutils literal notranslate"><span class="pre">white_noise_burst</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ml4gw.waveforms.adhoc.multi.MultiWaveform" title="ml4gw.waveforms.adhoc.multi.MultiWaveform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiWaveform</span></code></a>(generator, sample_rate, duration)</p></td>
+<td><p>Callable class for combining multiple components generated by a single-burst waveform generator (e.g. <cite>SineGaussian</cite>, <cite>MorletGabor</cite>) into one waveform, optionally rescaled to a target total hrss.</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py class">
+<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.multi.MultiWaveform">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ml4gw.waveforms.adhoc.multi.</span></span><span class="sig-name descname"><span class="pre">MultiWaveform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.multi.MultiWaveform" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Callable class for combining multiple components generated by a
+single-burst waveform generator (e.g. <cite>SineGaussian</cite>, <cite>MorletGabor</cite>)
+into one waveform, optionally rescaled to a target total hrss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>generator</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></span>) -- Single-burst waveform generator to combine</p></li>
+<li><p><strong>sample_rate</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) -- Sample rate of waveform</p></li>
+<li><p><strong>duration</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) -- Duration of waveform</p></li>
+<li><p><strong>norm</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) -- Whether to rescale the combined waveform to <cite>hrss_tot</cite></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.multi.MultiWaveform.compute_hrss">
+<span class="sig-name descname"><span class="pre">compute_hrss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cross</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.multi.MultiWaveform.compute_hrss" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plus</strong> (<em>Tensor</em>)</p></li>
+<li><p><strong>cross</strong> (<em>Tensor</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.multi.MultiWaveform.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.multi.MultiWaveform.forward" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="ml4gw.waveforms.html" class="btn btn-neutral float-left" title="ml4gw.waveforms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="ml4gw.waveforms.adhoc.cosmic_string.html" class="btn btn-neutral float-right" title="ml4gw.waveforms.adhoc.cosmic_string" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ml4gw.waveforms.adhoc.morlet_gabor.html" class="btn btn-neutral float-left" title="ml4gw.waveforms.adhoc.morlet_gabor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ml4gw.waveforms.adhoc.ringdown.html" class="btn btn-neutral float-right" title="ml4gw.waveforms.adhoc.ringdown" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

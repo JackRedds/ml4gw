@@ -1,0 +1,12 @@
+ml4gw.waveforms.adhoc.multi
+===========================
+
+.. automodule:: ml4gw.waveforms.adhoc.multi
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      MultiWaveform
+   

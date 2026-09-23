@@ -8,6 +8,5 @@ ml4gw.waveforms.adhoc.sine\_gaussian
 
    .. autosummary::
    
-      MultiSineGaussian
       SineGaussian
    

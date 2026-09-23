@@ -12,6 +12,8 @@ ml4gw.waveforms.adhoc
 
    cosmic_string
    gaussian
+   morlet_gabor
+   multi
    ringdown
    sine_gaussian
    waveform_helper

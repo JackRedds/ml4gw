@@ -1,0 +1,13 @@
+ml4gw.data
+==========
+
+.. automodule:: ml4gw.data
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Injector
+      PsdEstimator
+   

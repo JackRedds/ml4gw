@@ -1,0 +1,12 @@
+ml4gw.waveforms.adhoc.morlet\_gabor
+===================================
+
+.. automodule:: ml4gw.waveforms.adhoc.morlet_gabor
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      MorletGabor
+   

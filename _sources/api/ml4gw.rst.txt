@@ -12,6 +12,7 @@
 
    augmentations
    constants
+   data
    dataloading
    distributions
    gw

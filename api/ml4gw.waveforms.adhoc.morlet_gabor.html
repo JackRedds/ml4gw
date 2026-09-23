@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ml4gw.waveforms.adhoc.ringdown &mdash; ml4gw  documentation</title>
+  <title>ml4gw.waveforms.adhoc.morlet_gabor &mdash; ml4gw  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ml4gw.waveforms.adhoc.sine_gaussian" href="ml4gw.waveforms.adhoc.sine_gaussian.html" />
-    <link rel="prev" title="ml4gw.waveforms.adhoc.multi" href="ml4gw.waveforms.adhoc.multi.html" /> 
+    <link rel="next" title="ml4gw.waveforms.adhoc.multi" href="ml4gw.waveforms.adhoc.multi.html" />
+    <link rel="prev" title="ml4gw.waveforms.adhoc.gaussian" href="ml4gw.waveforms.adhoc.gaussian.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -69,9 +69,9 @@
 <li class="toctree-l3 current"><a class="reference internal" href="ml4gw.waveforms.adhoc.html">ml4gw.waveforms.adhoc</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.cosmic_string.html">ml4gw.waveforms.adhoc.cosmic_string</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.gaussian.html">ml4gw.waveforms.adhoc.gaussian</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.morlet_gabor.html">ml4gw.waveforms.adhoc.morlet_gabor</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ml4gw.waveforms.adhoc.morlet_gabor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.multi.html">ml4gw.waveforms.adhoc.multi</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">ml4gw.waveforms.adhoc.ringdown</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.ringdown.html">ml4gw.waveforms.adhoc.ringdown</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.sine_gaussian.html">ml4gw.waveforms.adhoc.sine_gaussian</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.waveform_helper.html">ml4gw.waveforms.adhoc.waveform_helper</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ml4gw.waveforms.adhoc.white_noise_burst.html">ml4gw.waveforms.adhoc.white_noise_burst</a></li>
@@ -104,9 +104,9 @@
           <li class="breadcrumb-item"><a href="ml4gw.html">ml4gw</a></li>
           <li class="breadcrumb-item"><a href="ml4gw.waveforms.html">ml4gw.waveforms</a></li>
           <li class="breadcrumb-item"><a href="ml4gw.waveforms.adhoc.html">ml4gw.waveforms.adhoc</a></li>
-      <li class="breadcrumb-item active">ml4gw.waveforms.adhoc.ringdown</li>
+      <li class="breadcrumb-item active">ml4gw.waveforms.adhoc.morlet_gabor</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/api/ml4gw.waveforms.adhoc.ringdown.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/ml4gw.waveforms.adhoc.morlet_gabor.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -114,21 +114,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-ml4gw.waveforms.adhoc.ringdown">
-<span id="ml4gw-waveforms-adhoc-ringdown"></span><h1>ml4gw.waveforms.adhoc.ringdown<a class="headerlink" href="#module-ml4gw.waveforms.adhoc.ringdown" title="Link to this heading"></a></h1>
+  <section id="module-ml4gw.waveforms.adhoc.morlet_gabor">
+<span id="ml4gw-waveforms-adhoc-morlet-gabor"></span><h1>ml4gw.waveforms.adhoc.morlet_gabor<a class="headerlink" href="#module-ml4gw.waveforms.adhoc.morlet_gabor" title="Link to this heading"></a></h1>
 <p class="rubric">Classes</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ml4gw.waveforms.adhoc.ringdown.Ringdown" title="ml4gw.waveforms.adhoc.ringdown.Ringdown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Ringdown</span></code></a>(sample_rate, duration)</p></td>
-<td><p>Callable class for generating ringdown waveforms.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ml4gw.waveforms.adhoc.morlet_gabor.MorletGabor" title="ml4gw.waveforms.adhoc.morlet_gabor.MorletGabor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MorletGabor</span></code></a>(sample_rate, duration)</p></td>
+<td><p>Callable class for generating Morlet-Gabor wavelet waveforms, matching the frequency-domain implementation in HyperWave (<cite>hyperwave.detectors.waveforms.wavelets.morlet_gabor_fd</cite>).</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
-<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.ringdown.Ringdown">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ml4gw.waveforms.adhoc.ringdown.</span></span><span class="sig-name descname"><span class="pre">Ringdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.ringdown.Ringdown" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.morlet_gabor.MorletGabor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ml4gw.waveforms.adhoc.morlet_gabor.</span></span><span class="sig-name descname"><span class="pre">MorletGabor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.morlet_gabor.MorletGabor" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<p>Callable class for generating ringdown waveforms.</p>
+<p>Callable class for generating Morlet-Gabor wavelet waveforms,
+matching the frequency-domain implementation in HyperWave
+(<cite>hyperwave.detectors.waveforms.wavelets.morlet_gabor_fd</cite>).</p>
+<p>The wavelet is evaluated analytically in the frequency domain
+(continuous-FT convention)</p>
+<blockquote>
+<div><p>tau    = Q / (2 pi f0)
+Psi(f) = (A tau sqrt(pi) / 2) e^{-2i pi f t0}</p>
+<blockquote>
+<div><p>[ e^{+i phi0} e^{-pi^2 tau^2 (f-f0)^2}
++ e^{-i phi0} e^{-pi^2 tau^2 (f+f0)^2} ]</p>
+</div></blockquote>
+</div></blockquote>
+<p>with the elliptical polarisation model</p>
+<blockquote>
+<div><p>h_plus  = Psi
+h_cross = epsilon * 1j * Psi</p>
+</div></blockquote>
+<p>and transformed to the time domain with HyperWave's <cite>infft</cite>
+normalisation (<cite>irfft(...) * sample_rate</cite>), so that in the time
+domain <cite>h_plus ~ A exp(-(t-t0)^2 / tau^2) cos(2 pi f0 (t-t0) + phi0)</cite>.</p>
+<p>Unlike HyperWave, where <cite>t0</cite> is measured from the start of the
+segment, <cite>t0</cite> here is the offset from the center of the time window.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -138,22 +160,49 @@
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.ringdown.Ringdown.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quality</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inclination</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.ringdown.Ringdown.forward" title="Link to this definition"></a></dt>
-<dd><p>Generate ringdown waveform based on the damped sinusoid equation.</p>
+<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.morlet_gabor.MorletGabor.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quality</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shifts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ellipticity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.morlet_gabor.MorletGabor.forward" title="Link to this definition"></a></dt>
+<dd><p>Generate time-domain Morlet-Gabor wavelets.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>frequency</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>) -- Central frequency of the ringdown waveform in Hz</p></li>
-<li><p><strong>quality</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>) -- Quality factor of the ringdown waveform</p></li>
-<li><p><strong>epsilon</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>) -- Fraction of black hole's mass radiated as gravitational waves</p></li>
-<li><p><strong>phase</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>) -- Initial phase of the ringdown waveform in rad</p></li>
-<li><p><strong>inclination</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>) -- Inclination angle of the source in rad</p></li>
-<li><p><strong>distance</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>) -- Distance to the source in Mpc</p></li>
+<li><p><strong>quality</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>) -- Quality factor of the wavelet; sets
+<cite>tau = quality / (2 pi frequency)</cite></p></li>
+<li><p><strong>frequency</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>) -- Central frequency of the wavelet in Hz</p></li>
+<li><p><strong>amplitude</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>) -- Strain amplitude of the wavelet</p></li>
+<li><p><strong>phase</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>) -- Phase of the wavelet</p></li>
+<li><p><strong>t0</strong> -- Central time of the wavelet in seconds,
+relative to the center of the buffer</p></li>
+<li><p><strong>ellipticity</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Float[Tensor,</span> <span class="pre">'batch']</span></code></span>) -- Ellipticity of the signal in [-1, 1]. Sets
+<cite>h_cross = ellipticity * 1j * h_plus</cite>
+in the frequency domain.</p></li>
+<li><p><strong>shifts</strong> (<em>Float</em><em>[</em><em>Tensor</em><em>, </em><em>'batch'</em><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Tensors of cross and plus polarizations</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ml4gw.waveforms.adhoc.morlet_gabor.MorletGabor.frequency_domain">
+<span class="sig-name descname"><span class="pre">frequency_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quality</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shifts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ellipticity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.waveforms.adhoc.morlet_gabor.MorletGabor.frequency_domain" title="Link to this definition"></a></dt>
+<dd><p>Frequency-domain plus and cross polarizations on the rfft grid,
+in the continuous-FT convention. See <cite>forward</cite> for arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Complex tensors of cross and plus polarizations</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>quality</strong> (<em>Float</em><em>[</em><em>Tensor</em><em>, </em><em>'batch'</em><em>]</em>)</p></li>
+<li><p><strong>frequency</strong> (<em>Float</em><em>[</em><em>Tensor</em><em>, </em><em>'batch'</em><em>]</em>)</p></li>
+<li><p><strong>amplitude</strong> (<em>Float</em><em>[</em><em>Tensor</em><em>, </em><em>'batch'</em><em>]</em>)</p></li>
+<li><p><strong>phase</strong> (<em>Float</em><em>[</em><em>Tensor</em><em>, </em><em>'batch'</em><em>]</em>)</p></li>
+<li><p><strong>shifts</strong> (<em>Float</em><em>[</em><em>Tensor</em><em>, </em><em>'batch'</em><em>]</em>)</p></li>
+<li><p><strong>ellipticity</strong> (<em>Float</em><em>[</em><em>Tensor</em><em>, </em><em>'batch'</em><em>]</em>)</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -166,8 +215,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="ml4gw.waveforms.adhoc.multi.html" class="btn btn-neutral float-left" title="ml4gw.waveforms.adhoc.multi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="ml4gw.waveforms.adhoc.sine_gaussian.html" class="btn btn-neutral float-right" title="ml4gw.waveforms.adhoc.sine_gaussian" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ml4gw.waveforms.adhoc.gaussian.html" class="btn btn-neutral float-left" title="ml4gw.waveforms.adhoc.gaussian" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ml4gw.waveforms.adhoc.multi.html" class="btn btn-neutral float-right" title="ml4gw.waveforms.adhoc.multi" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
