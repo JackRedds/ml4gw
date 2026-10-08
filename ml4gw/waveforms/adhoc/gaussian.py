@@ -1,7 +1,7 @@
 import torch
 from torch import Tensor
 from ml4gw.types import BatchTensor
-from .waveform_helper import turkey_window, semi_major_minor_from_e
+from .waveform_helper import tukey_window, semi_major_minor_from_e
 
 class Gaussian(torch.nn.Module):
     def __init__(self, sample_rate: float, duration: float):
@@ -52,7 +52,7 @@ class Gaussian(torch.nn.Module):
         )
 
         alpha = 0.5
-        tw = turkey_window(
+        tw = tukey_window(
             t.shape[-1], 
             alpha, 
             device=device, 

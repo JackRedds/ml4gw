@@ -2,34 +2,47 @@ import math
 import torch
 from torch import nn, Tensor
 from ml4gw.types import BatchTensor
-from .waveform_helper import turkey_window, semi_major_minor_from_e
+from .waveform_helper import tukey_window, semi_major_minor_from_e
 
 class WhiteNoiseBurst(nn.Module):
     """
     Faithful PyTorch re-implementation of XLALGenerateBandAndTimeLimitedWhiteNoiseBurst.
 
-    On each forward() call, new independent white-noise bursts are generated (one
-    for h₊ and one for hₓ) following these steps:
-      - Compute the time-series length: floor(k_len * duration / delta_t / 2)*2 + 1. (lal's implementation uses k_len=21)
+    On each forward() call, new white-noise bursts are generated following these
+    steps. By default h₊ and hₓ come from independent noise draws (as in LAL); with
+    polarized=True, hₓ is built from the same noise as h₊ (see __init__).
+      - The time-series length is fixed at int(duration * sample_rate) from __init__
+        (LAL instead uses floor(21 * duration / delta_t / 2) * 2 + 1), so the window
+        should be much longer than the per-sample burst durations.
       - Apply a time-domain Gaussian window with effective sigma = sqrt(duration²/4 - 1/(π² * bandwidth²)).
       - Transform to the frequency domain (rFFT).
       - Apply a frequency-domain Gaussian envelope centered at 'frequency' (with width = bandwidth/2),
-        and adjust amplitudes with elliptical factors: a = √(1+eccentricity) for h₊, b = √(1–eccentricity) for hₓ.
+        and adjust amplitudes with elliptical factors a = 1/√(2 – e²) for h₊ and b = a·√(1 – e²) for hₓ,
+        so the expected hₓ/h₊ power ratio is 1 – e². Since h₊ and hₓ come from independent
+        noise, this sets their relative power, not a true elliptical polarization.
       - For non-DC bins, rotate the phase by exp(–i·phase) for h₊ and by i·exp(–i·phase) for hₓ.
       - Normalize so that ∫(ḣ₊²+ḣₓ²)dt equals int_hdot_squared.
       - Inverse FFT back to the time domain and apply a final Tukey window (α=0.5) to smooth the edges.
     """
 
-    def __init__(self, sample_rate: float, duration: float):
+    def __init__(
+        self, sample_rate: float, duration: float, polarized: bool = False
+    ):
         """
         Args:
             sample_rate: Sampling rate in Hz.
-            duration: Nominal burst duration in seconds.
-            device: "cpu" or "cuda".
+            duration: Length of the generated time series in seconds.
+            polarized:
+                If False (default), h₊ and hₓ use independent noise, giving
+                an unpolarized burst. If True, hₓ uses the same noise as h₊,
+                so hₓ is h₊ phase-shifted by 90° and scaled by b/a: circular
+                polarization at eccentricity 0 and linear (hₓ = 0) at 1, the
+                same convention as SineGaussian.
         """
         super().__init__()
         self.sample_rate = sample_rate
         self.duration = duration
+        self.polarized = polarized
 
         num = int(duration * sample_rate)
         self.length = num
@@ -56,6 +69,7 @@ class WhiteNoiseBurst(nn.Module):
             eccentricity: (batch,) Value in [0, 1] setting elliptical amplitude factors.
             phase: (batch,) Overall phase offset (radians).
             int_hdot_squared: (batch,) Desired ∫(ḣ₊² + ḣₓ²) dt.
+            duration: (batch,) Burst duration τ (s); requires τ²/4 > 1/(π² bandwidth²).
 
         Returns:
             A tuple (h_cross, h_plus), each of shape (batch, length).
@@ -98,12 +112,15 @@ class WhiteNoiseBurst(nn.Module):
             dtype=dtype
         )
         
-        hcross = torch.randn(
-            batch, 
-            length, 
-            device=device, 
-            dtype=dtype
-        )
+        if self.polarized:
+            hcross = hplus.clone()
+        else:
+            hcross = torch.randn(
+                batch, 
+                length, 
+                device=device, 
+                dtype=dtype
+            )
 
         t_row = self.times.to(
             dtype=dtype,
@@ -223,8 +240,10 @@ class WhiteNoiseBurst(nn.Module):
             int_hdot_squared.squeeze(-1)
         )
 
+        # The sums above cover only non-negative frequencies, so the
+        # factor of 2 accounts for the negative-frequency half (Parseval)
         norm_factor = torch.sqrt(
-            current_hdotsq 
+            2 * current_hdotsq 
             / target_hdotsq.clamp(min=eps)
         )
 
@@ -255,7 +274,7 @@ class WhiteNoiseBurst(nn.Module):
             * self.sample_rate
         )
 
-        tw = turkey_window(
+        tw = tukey_window(
             length, 
             alpha=0.5, 
             device=device, 
