@@ -2,7 +2,7 @@ import math
 import torch
 from torch import Tensor
 from ml4gw.types import BatchTensor, Tensor
-from .waveform_helper import turkey_window, semi_major_minor_from_e
+from .waveform_helper import tukey_window, semi_major_minor_from_e
 
 class CosmicString(torch.nn.Module):
     """
@@ -176,10 +176,10 @@ class CosmicString(torch.nn.Module):
         hcross = torch.zeros_like(hplus)
 
         # ---------------------------------------------------------
-        # Turkey window
+        # Tukey window
         # ---------------------------------------------------------
 
-        tw = turkey_window(
+        tw = tukey_window(
             length, 
             alpha=0.5, 
             device=device, 
