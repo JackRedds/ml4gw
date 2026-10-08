@@ -1,0 +1,13 @@
+ml4gw.plotting
+==============
+
+.. automodule:: ml4gw.plotting
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   skymap

@@ -17,6 +17,8 @@
    distributions
    gw
    nn
+   plotting
+   skymap
    spectral
    transforms
    types

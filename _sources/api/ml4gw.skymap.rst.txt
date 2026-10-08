@@ -1,0 +1,12 @@
+ml4gw.skymap
+============
+
+.. automodule:: ml4gw.skymap
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      SkyMap
+   

@@ -1,0 +1,12 @@
+ml4gw.plotting.skymap
+=====================
+
+.. automodule:: ml4gw.plotting.skymap
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      plot_skymap
+   

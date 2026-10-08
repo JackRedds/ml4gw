@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="python" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ml4gw.utils.healpix &mdash; ml4gw  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d048f138"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ml4gw.utils.interferometer" href="ml4gw.utils.interferometer.html" />
+    <link rel="prev" title="ml4gw.utils" href="ml4gw.utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            ml4gw
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Example Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ml4gw_tutorial.html">Tutorial on the basics of <code class="docutils literal notranslate"><span class="pre">ml4gw</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ml4gw_lfi_tutorial.html">Tutorial on distribution approximation and posterior estimation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ml4gw.html">ml4gw</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ml4gw.utils.html">ml4gw.utils</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ml4gw.utils.healpix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ml4gw.utils.healpix.ang2pix"><code class="docutils literal notranslate"><span class="pre">ang2pix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ml4gw.utils.healpix.nest2uniq"><code class="docutils literal notranslate"><span class="pre">nest2uniq()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ml4gw.utils.healpix.npix2nside"><code class="docutils literal notranslate"><span class="pre">npix2nside()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ml4gw.utils.healpix.nside2npix"><code class="docutils literal notranslate"><span class="pre">nside2npix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ml4gw.utils.healpix.nside2pixarea"><code class="docutils literal notranslate"><span class="pre">nside2pixarea()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ml4gw.utils.healpix.pix2ang"><code class="docutils literal notranslate"><span class="pre">pix2ang()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ml4gw.utils.healpix.ring2nest_map"><code class="docutils literal notranslate"><span class="pre">ring2nest_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ml4gw.utils.healpix.uniq2nest"><code class="docutils literal notranslate"><span class="pre">uniq2nest()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ml4gw.utils.interferometer.html">ml4gw.utils.interferometer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml4gw.utils.slicing.html">ml4gw.utils.slicing</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ml4gw</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="ml4gw.utils.html">ml4gw.utils</a></li>
+      <li class="breadcrumb-item active">ml4gw.utils.healpix</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/ml4gw.utils.healpix.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ml4gw.utils.healpix">
+<span id="ml4gw-utils-healpix"></span><h1>ml4gw.utils.healpix<a class="headerlink" href="#module-ml4gw.utils.healpix" title="Link to this heading"></a></h1>
+<p>Minimal numpy implementations of the HEALPix pixel-indexing
+routines needed to read and plot sky maps, so that doing so
+doesn't require <code class="docutils literal notranslate"><span class="pre">healpy</span></code> or <code class="docutils literal notranslate"><span class="pre">ligo.skymap</span></code>.</p>
+<p>Algorithms follow Górski et al. (2005) and the reference
+HEALPix C++ implementation (<code class="docutils literal notranslate"><span class="pre">healpix_base.cc</span></code>).
+All angles are in radians, with <code class="docutils literal notranslate"><span class="pre">theta</span></code> the colatitude
+in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">pi]</span></code> and <code class="docutils literal notranslate"><span class="pre">phi</span></code> the longitude (right ascension).</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ml4gw.utils.healpix.ang2pix" title="ml4gw.utils.healpix.ang2pix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ang2pix</span></code></a>(nside, theta, phi[, nest])</p></td>
+<td><p>HEALPix pixel index containing each of the given angles.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ml4gw.utils.healpix.nest2uniq" title="ml4gw.utils.healpix.nest2uniq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nest2uniq</span></code></a>(order, ipix)</p></td>
+<td><p>Inverse of <a class="reference internal" href="#ml4gw.utils.healpix.uniq2nest" title="ml4gw.utils.healpix.uniq2nest"><code class="xref py py-func docutils literal notranslate"><span class="pre">uniq2nest()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ml4gw.utils.healpix.npix2nside" title="ml4gw.utils.healpix.npix2nside"><code class="xref py py-obj docutils literal notranslate"><span class="pre">npix2nside</span></code></a>(npix)</p></td>
+<td><p>HEALPix <code class="docutils literal notranslate"><span class="pre">nside</span></code> of a map with <code class="docutils literal notranslate"><span class="pre">npix</span></code> pixels</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ml4gw.utils.healpix.nside2npix" title="ml4gw.utils.healpix.nside2npix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nside2npix</span></code></a>(nside)</p></td>
+<td><p>Number of pixels in a HEALPix map with the given <code class="docutils literal notranslate"><span class="pre">nside</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ml4gw.utils.healpix.nside2pixarea" title="ml4gw.utils.healpix.nside2pixarea"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nside2pixarea</span></code></a>(nside)</p></td>
+<td><p>Solid angle of a single pixel in steradians</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ml4gw.utils.healpix.pix2ang" title="ml4gw.utils.healpix.pix2ang"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pix2ang</span></code></a>(nside, ipix[, nest])</p></td>
+<td><p>Angular coordinates of the centers of the given pixels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ml4gw.utils.healpix.ring2nest_map" title="ml4gw.utils.healpix.ring2nest_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring2nest_map</span></code></a>(m)</p></td>
+<td><p>Reorder a full-sky RING-ordered map into NESTED ordering</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ml4gw.utils.healpix.uniq2nest" title="ml4gw.utils.healpix.uniq2nest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uniq2nest</span></code></a>(uniq)</p></td>
+<td><p>Convert multi-order <code class="docutils literal notranslate"><span class="pre">UNIQ</span></code> pixel indices to HEALPix orders and NESTED pixel indices.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="ml4gw.utils.healpix.ang2pix">
+<span class="sig-prename descclassname"><span class="pre">ml4gw.utils.healpix.</span></span><span class="sig-name descname"><span class="pre">ang2pix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nside</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.utils.healpix.ang2pix" title="Link to this definition"></a></dt>
+<dd><p>HEALPix pixel index containing each of the given angles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nside</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) -- HEALPix resolution parameter</p></li>
+<li><p><strong>theta</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></span>) -- Colatitude in radians, in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">pi]</span></code></p></li>
+<li><p><strong>phi</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></span>) -- Longitude in radians</p></li>
+<li><p><strong>nest</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) -- If <code class="docutils literal notranslate"><span class="pre">True</span></code>, return NESTED indices,
+otherwise return RING indices</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Array of pixel indices with the broadcast
+shape of <code class="docutils literal notranslate"><span class="pre">theta</span></code> and <code class="docutils literal notranslate"><span class="pre">phi</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ml4gw.utils.healpix.nest2uniq">
+<span class="sig-prename descclassname"><span class="pre">ml4gw.utils.healpix.</span></span><span class="sig-name descname"><span class="pre">nest2uniq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ipix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.utils.healpix.nest2uniq" title="Link to this definition"></a></dt>
+<dd><p>Inverse of <a class="reference internal" href="#ml4gw.utils.healpix.uniq2nest" title="ml4gw.utils.healpix.uniq2nest"><code class="xref py py-func docutils literal notranslate"><span class="pre">uniq2nest()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>order</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>ipix</strong> (<em>ndarray</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ml4gw.utils.healpix.npix2nside">
+<span class="sig-prename descclassname"><span class="pre">ml4gw.utils.healpix.</span></span><span class="sig-name descname"><span class="pre">npix2nside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">npix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.utils.healpix.npix2nside" title="Link to this definition"></a></dt>
+<dd><p>HEALPix <code class="docutils literal notranslate"><span class="pre">nside</span></code> of a map with <code class="docutils literal notranslate"><span class="pre">npix</span></code> pixels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>npix</strong> (<em>int</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ml4gw.utils.healpix.nside2npix">
+<span class="sig-prename descclassname"><span class="pre">ml4gw.utils.healpix.</span></span><span class="sig-name descname"><span class="pre">nside2npix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nside</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.utils.healpix.nside2npix" title="Link to this definition"></a></dt>
+<dd><p>Number of pixels in a HEALPix map with the given <code class="docutils literal notranslate"><span class="pre">nside</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>nside</strong> (<em>int</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ml4gw.utils.healpix.nside2pixarea">
+<span class="sig-prename descclassname"><span class="pre">ml4gw.utils.healpix.</span></span><span class="sig-name descname"><span class="pre">nside2pixarea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nside</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.utils.healpix.nside2pixarea" title="Link to this definition"></a></dt>
+<dd><p>Solid angle of a single pixel in steradians</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>nside</strong> (<em>int</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ml4gw.utils.healpix.pix2ang">
+<span class="sig-prename descclassname"><span class="pre">ml4gw.utils.healpix.</span></span><span class="sig-name descname"><span class="pre">pix2ang</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nside</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ipix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.utils.healpix.pix2ang" title="Link to this definition"></a></dt>
+<dd><p>Angular coordinates of the centers of the given pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nside</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) -- HEALPix resolution parameter</p></li>
+<li><p><strong>ipix</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></span>) -- Pixel indices</p></li>
+<li><p><strong>nest</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) -- If <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">ipix</span></code> are NESTED indices,
+otherwise they are RING indices</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple of the colatitude <code class="docutils literal notranslate"><span class="pre">theta</span></code> and
+longitude <code class="docutils literal notranslate"><span class="pre">phi</span></code> of each pixel center, in radians</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ml4gw.utils.healpix.ring2nest_map">
+<span class="sig-prename descclassname"><span class="pre">ml4gw.utils.healpix.</span></span><span class="sig-name descname"><span class="pre">ring2nest_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.utils.healpix.ring2nest_map" title="Link to this definition"></a></dt>
+<dd><p>Reorder a full-sky RING-ordered map into NESTED ordering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>m</strong> (<em>ndarray</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ml4gw.utils.healpix.uniq2nest">
+<span class="sig-prename descclassname"><span class="pre">ml4gw.utils.healpix.</span></span><span class="sig-name descname"><span class="pre">uniq2nest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uniq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ml4gw.utils.healpix.uniq2nest" title="Link to this definition"></a></dt>
+<dd><p>Convert multi-order <code class="docutils literal notranslate"><span class="pre">UNIQ</span></code> pixel indices to
+HEALPix orders and NESTED pixel indices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uniq</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></span>) -- <code class="docutils literal notranslate"><span class="pre">UNIQ</span></code> pixel indices, i.e. <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">*</span> <span class="pre">nside**2</span> <span class="pre">+</span> <span class="pre">ipix</span></code></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple of the order (<code class="docutils literal notranslate"><span class="pre">log2(nside)</span></code>) and NESTED
+pixel index of each pixel</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ml4gw.utils.html" class="btn btn-neutral float-left" title="ml4gw.utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ml4gw.utils.interferometer.html" class="btn btn-neutral float-right" title="ml4gw.utils.interferometer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Ethan Marx &lt;emarx@mit.edu&gt;, Will Benoit &lt;benoi090@umn.edu&gt;, Deep Chatterjee &lt;deep1018@mit.edu&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

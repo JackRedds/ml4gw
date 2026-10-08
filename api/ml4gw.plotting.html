@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ml4gw.constants &mdash; ml4gw  documentation</title>
+  <title>ml4gw.plotting &mdash; ml4gw  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ml4gw.data" href="ml4gw.data.html" />
-    <link rel="prev" title="ml4gw.augmentations" href="ml4gw.augmentations.html" /> 
+    <link rel="next" title="ml4gw.plotting.skymap" href="ml4gw.plotting.skymap.html" />
+    <link rel="prev" title="ml4gw.nn.streaming.snapshotter" href="ml4gw.nn.streaming.snapshotter.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,13 +56,16 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="ml4gw.html">ml4gw</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="ml4gw.augmentations.html">ml4gw.augmentations</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">ml4gw.constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml4gw.constants.html">ml4gw.constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ml4gw.data.html">ml4gw.data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ml4gw.dataloading.html">ml4gw.dataloading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ml4gw.distributions.html">ml4gw.distributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ml4gw.gw.html">ml4gw.gw</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ml4gw.nn.html">ml4gw.nn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ml4gw.plotting.html">ml4gw.plotting</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ml4gw.plotting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ml4gw.plotting.skymap.html">ml4gw.plotting.skymap</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="ml4gw.skymap.html">ml4gw.skymap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ml4gw.spectral.html">ml4gw.spectral</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ml4gw.transforms.html">ml4gw.transforms</a></li>
@@ -88,9 +91,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="ml4gw.html">ml4gw</a></li>
-      <li class="breadcrumb-item active">ml4gw.constants</li>
+      <li class="breadcrumb-item active">ml4gw.plotting</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/api/ml4gw.constants.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/ml4gw.plotting.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -98,17 +101,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-ml4gw.constants">
-<span id="ml4gw-constants"></span><h1>ml4gw.constants<a class="headerlink" href="#module-ml4gw.constants" title="Link to this heading"></a></h1>
-<p>Various constants, all in SI units.</p>
+  <section id="module-ml4gw.plotting">
+<span id="ml4gw-plotting"></span><h1>ml4gw.plotting<a class="headerlink" href="#module-ml4gw.plotting" title="Link to this heading"></a></h1>
+<p class="rubric">Modules</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="ml4gw.plotting.skymap.html#module-ml4gw.plotting.skymap" title="ml4gw.plotting.skymap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skymap</span></code></a></p></td>
+<td><p>Mollweide plots of HEALPix sky localizations, e.g. from the FITS sky maps written by AMPLFI or HyperWave.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="ml4gw.augmentations.html" class="btn btn-neutral float-left" title="ml4gw.augmentations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="ml4gw.data.html" class="btn btn-neutral float-right" title="ml4gw.data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ml4gw.nn.streaming.snapshotter.html" class="btn btn-neutral float-left" title="ml4gw.nn.streaming.snapshotter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ml4gw.plotting.skymap.html" class="btn btn-neutral float-right" title="ml4gw.plotting.skymap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -9,5 +9,5 @@ ml4gw.waveforms.adhoc.waveform\_helper
    .. autosummary::
    
       semi_major_minor_from_e
-      turkey_window
+      tukey_window
    
