@@ -88,8 +88,11 @@ class CosmicString(torch.nn.Module):
             device=device
         )
 
+        # shift the peak to sample length // 2, which is t = 0 in
+        # self.times. LAL shifts by (length - 1) / 2, which only lands
+        # on a sample for its odd-length buffers
         phase_factor = torch.exp(
-            -1j * math.pi * k * (length - 1) / float(length)
+            -2j * math.pi * k * (length // 2) / float(length)
         )
 
         phase_factor = phase_factor.unsqueeze(0)

@@ -39,7 +39,7 @@ class Gaussian(torch.nn.Module):
                         device=device
                     )
                 ) 
-                * self.length
+                * duration
             )
         )
 

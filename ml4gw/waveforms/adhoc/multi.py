@@ -37,11 +37,11 @@ class MultiWaveform(torch.nn.Module):
         N = hrss_tot.shape[0]
         n_components = hrss_tot.shape[-1]
         hrss_tot = hrss_tot[:, 0]
-        n_samples = int(self.sample_rate * self.duration)
-
         cross, plus = self.generator(**parameters)
-        cross = cross.reshape((N, n_components, n_samples))
-        plus = plus.reshape((N, n_components, n_samples))
+        # take the sample count from the generator's output, since
+        # generators may round duration * sample_rate differently
+        cross = cross.reshape((N, n_components, -1))
+        plus = plus.reshape((N, n_components, -1))
 
         cross = cross.nansum(dim=1)
         plus = plus.nansum(dim=1)
